@@ -9,6 +9,8 @@ Potrzebne są: Mono, GTK2, libgdiplus
 
 Pobieranie: 
 
+Pobieranie:
+
 git clone https://github.com/hellman305/LabZSK_LinuxPort.git
 cd LabZSK_LinuxPort
 
