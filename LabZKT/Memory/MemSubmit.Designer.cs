@@ -85,7 +85,7 @@
             // 
             // button_Choice_Cancel
             // 
-            this.button_Choice_Cancel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Choice_Cancel.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Choice_Cancel.Location = new System.Drawing.Point(169, 159);
             this.button_Choice_Cancel.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Choice_Cancel.Name = "button_Choice_Cancel";
@@ -97,7 +97,7 @@
             // 
             // button_Choice_Complex
             // 
-            this.button_Choice_Complex.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Choice_Complex.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Choice_Complex.Location = new System.Drawing.Point(52, 110);
             this.button_Choice_Complex.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Choice_Complex.Name = "button_Choice_Complex";
@@ -109,7 +109,7 @@
             // 
             // button_Choice_Simple
             // 
-            this.button_Choice_Simple.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Choice_Simple.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Choice_Simple.Location = new System.Drawing.Point(52, 63);
             this.button_Choice_Simple.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Choice_Simple.Name = "button_Choice_Simple";
@@ -121,7 +121,7 @@
             // 
             // button_Choice_Data
             // 
-            this.button_Choice_Data.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Choice_Data.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Choice_Data.Location = new System.Drawing.Point(52, 17);
             this.button_Choice_Data.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Choice_Data.Name = "button_Choice_Data";
@@ -150,7 +150,7 @@
             // radioButton_Hex
             // 
             this.radioButton_Hex.AutoSize = true;
-            this.radioButton_Hex.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButton_Hex.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButton_Hex.Location = new System.Drawing.Point(52, 67);
             this.radioButton_Hex.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton_Hex.Name = "radioButton_Hex";
@@ -164,7 +164,7 @@
             // 
             this.radioButton_Dec.AutoSize = true;
             this.radioButton_Dec.Checked = true;
-            this.radioButton_Dec.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButton_Dec.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButton_Dec.Location = new System.Drawing.Point(52, 42);
             this.radioButton_Dec.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton_Dec.Name = "radioButton_Dec";
@@ -178,7 +178,7 @@
             // radioButton_Bin
             // 
             this.radioButton_Bin.AutoSize = true;
-            this.radioButton_Bin.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioButton_Bin.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButton_Bin.Location = new System.Drawing.Point(52, 17);
             this.radioButton_Bin.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton_Bin.Name = "radioButton_Bin";
@@ -202,7 +202,7 @@
             // 
             // button_Data_Cancel
             // 
-            this.button_Data_Cancel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Data_Cancel.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Data_Cancel.Location = new System.Drawing.Point(169, 159);
             this.button_Data_Cancel.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Data_Cancel.Name = "button_Data_Cancel";
@@ -214,7 +214,7 @@
             // 
             // button_Data_OK
             // 
-            this.button_Data_OK.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Data_OK.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Data_OK.Location = new System.Drawing.Point(9, 159);
             this.button_Data_OK.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Data_OK.Name = "button_Data_OK";
@@ -246,7 +246,7 @@
             // labelOP
             // 
             this.labelOP.AutoSize = true;
-            this.labelOP.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelOP.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelOP.Location = new System.Drawing.Point(69, 50);
             this.labelOP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelOP.Name = "labelOP";
@@ -281,7 +281,7 @@
             // labelDA
             // 
             this.labelDA.AutoSize = true;
-            this.labelDA.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDA.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelDA.Location = new System.Drawing.Point(69, 128);
             this.labelDA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDA.Name = "labelDA";
@@ -291,7 +291,7 @@
             // 
             // button_Simple_Cancel
             // 
-            this.button_Simple_Cancel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Simple_Cancel.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Simple_Cancel.Location = new System.Drawing.Point(169, 159);
             this.button_Simple_Cancel.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Simple_Cancel.Name = "button_Simple_Cancel";
@@ -303,7 +303,7 @@
             // 
             // button_Simple_OK
             // 
-            this.button_Simple_OK.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Simple_OK.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Simple_OK.Location = new System.Drawing.Point(9, 159);
             this.button_Simple_OK.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Simple_OK.Name = "button_Simple_OK";
@@ -316,7 +316,7 @@
             // checkBox_I
             // 
             this.checkBox_I.AutoSize = true;
-            this.checkBox_I.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox_I.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBox_I.Location = new System.Drawing.Point(174, 85);
             this.checkBox_I.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.checkBox_I.Name = "checkBox_I";
@@ -329,7 +329,7 @@
             // checkBox_S
             // 
             this.checkBox_S.AutoSize = true;
-            this.checkBox_S.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox_S.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBox_S.Location = new System.Drawing.Point(92, 85);
             this.checkBox_S.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.checkBox_S.Name = "checkBox_S";
@@ -342,7 +342,7 @@
             // checkBox_X
             // 
             this.checkBox_X.AutoSize = true;
-            this.checkBox_X.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkBox_X.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.checkBox_X.Location = new System.Drawing.Point(10, 85);
             this.checkBox_X.Margin = new System.Windows.Forms.Padding(15, 2, 15, 2);
             this.checkBox_X.Name = "checkBox_X";
@@ -370,7 +370,7 @@
             // 
             this.comboBox_Simple.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.comboBox_Simple.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Simple.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox_Simple.Font = new System.Drawing.Font("DejaVu Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBox_Simple.FormattingEnabled = true;
             this.comboBox_Simple.Items.AddRange(new object[] {
             "ADD - Dodawanie",
@@ -430,7 +430,7 @@
             // labelAOP
             // 
             this.labelAOP.AutoSize = true;
-            this.labelAOP.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAOP.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelAOP.Location = new System.Drawing.Point(69, 51);
             this.labelAOP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAOP.Name = "labelAOP";
@@ -455,7 +455,7 @@
             // labelN
             // 
             this.labelN.AutoSize = true;
-            this.labelN.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelN.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelN.Location = new System.Drawing.Point(76, 97);
             this.labelN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelN.Name = "labelN";
@@ -481,7 +481,7 @@
             // 
             this.comboBox_Complex.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.comboBox_Complex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Complex.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox_Complex.Font = new System.Drawing.Font("DejaVu Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBox_Complex.FormattingEnabled = true;
             this.comboBox_Complex.Items.AddRange(new object[] {
             "STP - Stop dynamiczny",
@@ -509,7 +509,7 @@
             // 
             // button_Complex_Cancel
             // 
-            this.button_Complex_Cancel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Complex_Cancel.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Complex_Cancel.Location = new System.Drawing.Point(169, 159);
             this.button_Complex_Cancel.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Complex_Cancel.Name = "button_Complex_Cancel";
@@ -521,7 +521,7 @@
             // 
             // button_Complex_OK
             // 
-            this.button_Complex_OK.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Complex_OK.Font = new System.Drawing.Font("DejaVu Sans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Complex_OK.Location = new System.Drawing.Point(9, 159);
             this.button_Complex_OK.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button_Complex_OK.Name = "button_Complex_OK";
@@ -539,7 +539,7 @@
             this.Controls.Add(this.panel_Choice);
             this.Controls.Add(this.panel_Simple);
             this.Controls.Add(this.panel_Data);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            // Icon disabled on Linux/Mono
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;

@@ -105,7 +105,7 @@
             this.Typ});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -141,7 +141,7 @@
             this.Adres.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("DejaVu Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -214,7 +214,7 @@
             // 
             this.button_Clear_Row.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.button_Clear_Row.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Clear_Row.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Clear_Row.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Clear_Row.Location = new System.Drawing.Point(13, 9);
             this.button_Clear_Row.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.button_Clear_Row.Name = "button_Clear_Row";
@@ -227,7 +227,7 @@
             // button_Clear_Table
             // 
             this.button_Clear_Table.BackColor = System.Drawing.Color.Red;
-            this.button_Clear_Table.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Clear_Table.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Clear_Table.ForeColor = System.Drawing.SystemColors.Window;
             this.button_Clear_Table.Location = new System.Drawing.Point(160, 7);
             this.button_Clear_Table.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
@@ -246,7 +246,7 @@
             this.dataGridView_Decode_Complex.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -260,7 +260,7 @@
             this.dataGridViewTextBoxColumn6});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -276,7 +276,7 @@
             this.dataGridView_Decode_Complex.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -356,7 +356,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(11, 239);
             this.button1.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.button1.Name = "button1";
@@ -372,7 +372,7 @@
             this.button_Edit.FlatAppearance.BorderColor = System.Drawing.Color.Green;
             this.button_Edit.FlatAppearance.BorderSize = 2;
             this.button_Edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Edit.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Edit.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Edit.Location = new System.Drawing.Point(11, 162);
             this.button_Edit.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.button_Edit.Name = "button_Edit";
@@ -389,7 +389,7 @@
             this.button_Load_Table.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button_Load_Table.FlatAppearance.BorderSize = 2;
             this.button_Load_Table.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Load_Table.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Load_Table.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Load_Table.Location = new System.Drawing.Point(11, 8);
             this.button_Load_Table.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.button_Load_Table.Name = "button_Load_Table";
@@ -415,7 +415,7 @@
             this.button_Exit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button_Exit.FlatAppearance.BorderSize = 3;
             this.button_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Exit.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Exit.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Exit.Location = new System.Drawing.Point(11, 7);
             this.button_Exit.Margin = new System.Windows.Forms.Padding(11, 7, 11, 0);
             this.button_Exit.Name = "button_Exit";
@@ -431,7 +431,7 @@
             this.button_Save_Table.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.button_Save_Table.FlatAppearance.BorderSize = 2;
             this.button_Save_Table.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Save_Table.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button_Save_Table.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_Save_Table.Location = new System.Drawing.Point(11, 85);
             this.button_Save_Table.Margin = new System.Windows.Forms.Padding(11, 7, 11, 7);
             this.button_Save_Table.Name = "button_Save_Table";
@@ -476,7 +476,7 @@
             this.Property});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("DejaVu Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -526,7 +526,7 @@
             this.ClientSize = new System.Drawing.Size(854, 626);
             this.Controls.Add(this.panel_Edit_PO);
             this.Controls.Add(this.panel_View_PO);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            // Icon disabled on Linux/Mono
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(730, 645);

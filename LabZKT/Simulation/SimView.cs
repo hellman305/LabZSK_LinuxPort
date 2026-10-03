@@ -44,7 +44,7 @@ namespace LabZSK.Simulation {
         public static extern bool CloseHandle(IntPtr handle);
         #endregion
         internal event Action<int, string, string, int> AUpdateForm;
-        private string _environmentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LabZSK";
+        private string _environmentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LabZSK");
         private static Thread serverTimer;
         internal static int appLostFocusCounter = 0;
         //private bool isDebuggerPresent;
@@ -109,11 +109,46 @@ namespace LabZSK.Simulation {
         private Size windowSize;
         private FormWindowState previousWindowState;
         private FormWindowState currentWindowState;
-        #endregion
+
+        // Linux/Mono fullscreen support
+        private bool isFullscreen = false;
+        private bool fullscreenScalingInProgress = false;
+        private Dictionary<Control, DockStyle> fullscreenOriginalDock =
+            new Dictionary<Control, DockStyle>();
+
+        private Dictionary<Control, AnchorStyles> fullscreenOriginalAnchor =
+            new Dictionary<Control, AnchorStyles>();
+
+        private Size fullscreenOriginalClientSize;
+
+        private Rectangle fullscreenOriginalPanelBounds;
+
+        private Dictionary<Control, Rectangle> fullscreenOriginalControlBounds =
+            new Dictionary<Control, Rectangle>();
+
+        private Dictionary<Control, Font> fullscreenOriginalControlFonts =
+            new Dictionary<Control, Font>();
+
+
+        private Dictionary<Control, Rectangle> fullscreenOriginalBounds =
+            new Dictionary<Control, Rectangle>();
+
+        private Dictionary<Control, Font> fullscreenOriginalFonts =
+            new Dictionary<Control, Font>();
+
+        private Rectangle fullscreenBounds;
+        private FormWindowState fullscreenPreviousWindowState;
+        private FormBorderStyle fullscreenPreviousBorderStyle;
+        private Size fullscreenPreviousMinimumSize;
+        private Size fullscreenPreviousMaximumSize;
+                #endregion
 
         public SimView(string filename)
         {
             InitializeComponent();
+
+            // F11/Esc must work even when a control has keyboard focus.
+            KeyPreview = true;
 
             richTextBox1.Text = string.Format("UT{0:00}:{1:00}", appStart.Hours, appStart.Minutes);
             var loc = richTextBox1.Location;
@@ -202,7 +237,7 @@ namespace LabZSK.Simulation {
             Settings.Default.CanCloseLog = false;
             Settings.Default.IsDevConsole = false;
             try {
-                string encryptedString = File.ReadAllText(_environmentPath + "\\LabZSK.cfg");
+                string encryptedString = File.ReadAllText(Path.Combine(_environmentPath, "LabZSK.cfg"));
                 string newAppSettings = StaticClasses.Encryptor.Decrypt(encryptedString);
 
                 string[] tmp = newAppSettings.Split(new[] { "<?>" }, StringSplitOptions.RemoveEmptyEntries);
@@ -295,7 +330,7 @@ namespace LabZSK.Simulation {
                     string encryptedstring = Encryptor.Encrypt(currentAppSettings);
                     try
                     {
-                        File.WriteAllText(_environmentPath + "\\LabZSK.cfg", encryptedstring);
+                        File.WriteAllText(Path.Combine(_environmentPath, "LabZSK.cfg"), encryptedstring);
                     }
                     catch { }
                 }
@@ -306,10 +341,10 @@ namespace LabZSK.Simulation {
         #region init
         private void initLists()
         {
-            Directory.CreateDirectory(_environmentPath + "\\TMP");
-            Directory.CreateDirectory(_environmentPath + "\\Log");
-            Directory.CreateDirectory(_environmentPath + "\\PO");
-            Directory.CreateDirectory(_environmentPath + "\\PM");
+            Directory.CreateDirectory(Path.Combine(_environmentPath, "TMP"));
+            Directory.CreateDirectory(Path.Combine(_environmentPath, "Log"));
+            Directory.CreateDirectory(Path.Combine(_environmentPath, "PO"));
+            Directory.CreateDirectory(Path.Combine(_environmentPath, "PM"));
             for (int i = 0; i < 256; i++)
                 List_MicroOp.Add(new MicroOperation(i, "", "", "", "", "", "", "", "", "", "", ""));
             for (int i = 0; i < 256; i++)
@@ -487,6 +522,8 @@ namespace LabZSK.Simulation {
         #region SubFormUpdate
         private void PmView_AUpdateData(int row, int col, string str)
         {
+            Console.WriteLine("UPDATE MAIN: row=" + row + " col=" + col + " value=" + str);
+
             addTextToLog("PM[".PadLeft(14, ' ')
                 + row + "][" + List_MicroOp[row].getColumnName(col) + "] = \"" + List_MicroOp[row].getColumn(col)
                 + "\"  -zmiana->  PM[" + row + "][" + List_MicroOp[row].getColumnName(col) + "] = \"" + str + "\"\n");
@@ -811,7 +848,6 @@ namespace LabZSK.Simulation {
                 {
                     Form log = new Form();
                     log.Text = Strings.viewLogFile;
-                    log.Icon = Resources.Logo_WAT1;
                     RichTextBox rtb = new FastRichBox();
                     rtb.WordWrap = false;
                     log.Controls.Add(rtb);
@@ -1006,6 +1042,11 @@ namespace LabZSK.Simulation {
         }
         private void RunSim_SizeChanged(object sender, EventArgs e)
         {
+            // Podczas fullscreen nie pozwalamy staremu mechanizmowi
+            // ResizeEnd przestawiać layoutu LabZSK.
+            if (fullscreenScalingInProgress)
+                return;
+
             var tmp = panel_Sim_Control.BackgroundImage;
             panel_Sim_Control.BackgroundImage = null;
             previousWindowState = currentWindowState;
@@ -1022,8 +1063,180 @@ namespace LabZSK.Simulation {
             else
                 panel_Sim_Control.BackgroundImage = tmp;
         }
+        
+
+        
+        private void SaveFullscreenRecursive(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                fullscreenOriginalControlBounds[control] =
+                    control.Bounds;
+
+                fullscreenOriginalControlFonts[control] =
+                    control.Font;
+
+                fullscreenOriginalDock[control] =
+                    control.Dock;
+
+                fullscreenOriginalAnchor[control] =
+                    control.Anchor;
+
+                if (control.HasChildren)
+                    SaveFullscreenRecursive(control);
+            }
+        }
+
+        private void PrepareFullscreenRecursive(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                // Wyłączamy Dock/Anchor, ponieważ inaczej
+                // WinForms może natychmiast nadpisać nasze Bounds.
+                control.Dock = DockStyle.None;
+                control.Anchor = AnchorStyles.Top |
+                                 AnchorStyles.Left;
+
+                if (control.HasChildren)
+                    PrepareFullscreenRecursive(control);
+            }
+        }
+
+        private void ScaleFullscreenRecursive(
+            Control parent,
+            float scale)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (!fullscreenOriginalControlBounds.ContainsKey(control))
+                    continue;
+
+                Rectangle original =
+                    fullscreenOriginalControlBounds[control];
+
+                control.Bounds =
+                    new Rectangle(
+                        (int)Math.Round(original.X * scale),
+                        (int)Math.Round(original.Y * scale),
+                        (int)Math.Round(original.Width * scale),
+                        (int)Math.Round(original.Height * scale)
+                    );
+
+                Font originalFont =
+                    fullscreenOriginalControlFonts[control];
+
+                if (originalFont != null)
+                {
+                    control.Font =
+                        new Font(
+                            originalFont.FontFamily,
+                            Math.Max(
+                                6.0f,
+                                originalFont.Size * scale
+                            ),
+                            originalFont.Style,
+                            originalFont.Unit
+                        );
+                }
+
+                if (control.HasChildren)
+                {
+                    ScaleFullscreenRecursive(
+                        control,
+                        scale
+                    );
+                }
+            }
+        }
+
+        private void RestoreFullscreenRecursive(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (fullscreenOriginalControlBounds.ContainsKey(control))
+                {
+                    control.Bounds =
+                        fullscreenOriginalControlBounds[control];
+                }
+
+                if (fullscreenOriginalControlFonts.ContainsKey(control))
+                {
+                    control.Font =
+                        fullscreenOriginalControlFonts[control];
+                }
+
+                if (fullscreenOriginalDock.ContainsKey(control))
+                {
+                    control.Dock =
+                        fullscreenOriginalDock[control];
+                }
+
+                if (fullscreenOriginalAnchor.ContainsKey(control))
+                {
+                    control.Anchor =
+                        fullscreenOriginalAnchor[control];
+                }
+
+                if (control.HasChildren)
+                {
+                    RestoreFullscreenRecursive(control);
+                }
+            }
+        }
+
+        private void ToggleFullscreen()
+        {
+            if (!isFullscreen)
+            {
+                fullscreenPreviousWindowState = WindowState;
+                fullscreenPreviousBorderStyle = FormBorderStyle;
+                fullscreenPreviousMinimumSize = MinimumSize;
+                fullscreenPreviousMaximumSize = MaximumSize;
+                fullscreenBounds = Bounds;
+                fullscreenScalingInProgress = true;
+                MinimumSize = new Size(0, 0);
+                MaximumSize = new Size(0, 0);
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+                isFullscreen = true;
+                fullscreenScalingInProgress = false;
+                Focus();
+            }
+            else
+            {
+                fullscreenScalingInProgress = true;
+                WindowState = FormWindowState.Normal;
+                FormBorderStyle = fullscreenPreviousBorderStyle;
+                MinimumSize = fullscreenPreviousMinimumSize;
+                MaximumSize = fullscreenPreviousMaximumSize;
+                StartPosition = FormStartPosition.Manual;
+                Bounds = fullscreenBounds;
+                if (fullscreenPreviousWindowState == FormWindowState.Maximized)
+                    WindowState = FormWindowState.Maximized;
+                isFullscreen = false;
+                fullscreenScalingInProgress = false;
+                Focus();
+            }
+        }
+
         private void SimView_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.F11)
+            {
+                ToggleFullscreen();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                return;
+            }
+
+            if (e.KeyCode == Keys.Escape && isFullscreen)
+            {
+                ToggleFullscreen();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                return;
+            }
+
             if (e.Alt && e.KeyCode == Keys.None)
             {
                 //e.Handled = true;
@@ -1079,7 +1292,6 @@ namespace LabZSK.Simulation {
 
                 Form log = new Form();
                 log.Text = "Uruchomienia";
-                log.Icon = Resources.Logo_WAT1;
                 RichTextBox rtb = new FastRichBox();
                 rtb.WordWrap = false;
                 log.Controls.Add(rtb);
@@ -1138,6 +1350,8 @@ namespace LabZSK.Simulation {
         }
         internal void Grid_Mem_SelectionChanged(object sender, EventArgs e)
         {
+            if (Grid_Mem.CurrentCell == null)
+                return;
             int idxRow = Grid_Mem.CurrentCell.RowIndex;
             int idxCol = Grid_Mem.CurrentCell.ColumnIndex;
             memView.changeSelectedPAO(idxRow);
@@ -1270,8 +1484,8 @@ namespace LabZSK.Simulation {
         {
             open_File_Dialog.Filter = "Logi symulatora|*.log|Wszystko|*.*";
             open_File_Dialog.Title = "Wczytaj log";
-            if (Directory.Exists(_environmentPath + @"\Log\"))
-                open_File_Dialog.InitialDirectory = _environmentPath + @"\Log\";
+            if (Directory.Exists(Path.Combine(_environmentPath, "Log")))
+                open_File_Dialog.InitialDirectory = Path.Combine(_environmentPath, "Log");
             else
                 open_File_Dialog.InitialDirectory = _environmentPath;
 

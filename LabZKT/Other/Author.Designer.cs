@@ -167,7 +167,6 @@
             this.ClientSize = new System.Drawing.Size(584, 395);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.No;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(600, 434);

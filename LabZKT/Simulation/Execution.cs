@@ -684,7 +684,9 @@ namespace LabZSK.Simulation {
                 microOpMnemo = Grid_PM[8, raps].Value.ToString();
                 if (microOpMnemo == "CEA") {
                     layoutChange = true;
+            Console.WriteLine("DEBUG SIM: before switchLayOut");
                     switchLayOut();
+            Console.WriteLine("DEBUG SIM: after switchLayOut");
                     short leftValue = 0, rightValue = 0;
 
                     string tmp = Convert.ToString(registers["RR"].innerValue, 2).PadLeft(16, '0');
@@ -743,7 +745,9 @@ namespace LabZSK.Simulation {
             flags["MAV"].setInnerValue(1);
             //addTextToLog("\t\tMAV = " + 1 + "\n");
             buttonOKClicked = false;
+            Console.WriteLine("DEBUG SIM: before switchLayOut");
             switchLayOut();
+            Console.WriteLine("DEBUG SIM: after switchLayOut");
         }
         #endregion
         #region StartSim
@@ -755,8 +759,8 @@ namespace LabZSK.Simulation {
             if (logFile == "") {
                 dialog.Filter = Strings.simLog + "|*.log|" + Strings.all + "|*.*";
                 dialog.Title = Strings.createLog;
-                if (Directory.Exists(_environmentPath + @"\Log\"))
-                    dialog.InitialDirectory = _environmentPath + @"\Log\";
+                if (Directory.Exists(Path.Combine(_environmentPath, "Log")))
+                    dialog.InitialDirectory = Path.Combine(_environmentPath, "Log");
                 else
                     dialog.InitialDirectory = _environmentPath;
                 MessageBox.Show(Strings.logFileName);
@@ -801,14 +805,20 @@ namespace LabZSK.Simulation {
                 else
                     addTextToLog(Strings.macro + "\n");
             }
+            Console.WriteLine("DEBUG INFO GRID: rows=" + dataGridView_Info.Rows.Count + " cols=" + dataGridView_Info.Columns.Count);
             dataGridView_Info.Rows[3].Cells[1].Value = (++currnetCycle);
+            Console.WriteLine("DEBUG PREPARE: before simulateCPU");
             simulateCPU();
         }
         private void simulateCPU() {
+            Console.WriteLine("DEBUG SIM: before startSim");
             startSim();
+            Console.WriteLine("DEBUG SIM: after startSim");
             if (currentTact == 0)
                 instructionFetch();
+            Console.WriteLine("DEBUG SIM: before switchLayOut");
             switchLayOut();
+            Console.WriteLine("DEBUG SIM: after switchLayOut");
             while (isRunning && currentTact > 0)
                 executeInstruction();
             DisableButtons();

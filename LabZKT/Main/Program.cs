@@ -15,7 +15,7 @@ namespace LabZSK
     {
         static Mutex singleton = new Mutex(true, "LabZSK");
 
-        private static string envPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LabZSK";
+        private static string envPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LabZSK");
         [STAThread]
         static void Main(string[] args)
         {

@@ -203,7 +203,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_Name);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Server";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

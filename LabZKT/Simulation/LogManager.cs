@@ -139,7 +139,6 @@ namespace LabZSK.Simulation {
                 watcher.Path = Path.GetDirectoryName(logFile);
                 watcher.Filter = Path.GetFileName(logFile);
                 watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-                watcher.Changed += Watcher_Changed;
                 watcher.EnableRaisingEvents = true;
             }
             catch {
@@ -148,7 +147,7 @@ namespace LabZSK.Simulation {
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e) {
-            MessageBox.Show(Strings.errorLogCreating, "Ups", MessageBoxButtons.OK);
+            Console.WriteLine("WARNING: Log file changed externally: " + e.FullPath);
         }
 
         /// <summary>
@@ -169,7 +168,6 @@ namespace LabZSK.Simulation {
 
             Form log = new Form();
             log.Text = Strings.viewLogFile;
-            log.Icon = Resources.Logo_WAT1;
             RichTextBox rtb = new FastRichBox();
             rtb.WordWrap = false;
             log.Controls.Add(rtb);

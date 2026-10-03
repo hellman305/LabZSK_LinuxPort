@@ -18,7 +18,7 @@ namespace LabZSK.MicroOperations {
     public partial class PMView : Form {
         internal event Action<int, int, string> AUpdateData;
 
-        private string envPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LabZSK";
+        private string envPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LabZSK");
         internal PMSubmit theSubView;
         private Rectangle dragBoxFromMouseDown;
         private object valueFromMouseDown;
@@ -40,12 +40,36 @@ namespace LabZSK.MicroOperations {
         /// Initialize instance of class
         /// </summary>
         public PMView(SimView view, ref List<MicroOperation> List_MicroOps) {
-            this.view = view;
-            InitializeComponent();
-            this.List_MicroOps = List_MicroOps;
-            LoadMicroOperations();
-            setAllStrings();
-        }
+	this.view = view;
+	InitializeComponent();
+	this.List_MicroOps = List_MicroOps;
+	LoadMicroOperations();
+	setAllStrings();
+
+	// Linux/Mono: wymuszenie widocznych nagłówków DataGridView
+	Grid_PM.ColumnHeadersVisible = true;
+	Grid_PM.EnableHeadersVisualStyles = false;
+
+	Grid_PM.ColumnHeadersDefaultCellStyle.BackColor =
+		System.Drawing.SystemColors.Control;
+	Grid_PM.ColumnHeadersDefaultCellStyle.ForeColor =
+		System.Drawing.SystemColors.ControlText;
+	Grid_PM.ColumnHeadersDefaultCellStyle.Alignment =
+		System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+
+	Grid_PM.Columns[0].HeaderText = "Adres";
+	Grid_PM.Columns[1].HeaderText = "S1";
+	Grid_PM.Columns[2].HeaderText = "D1";
+	Grid_PM.Columns[3].HeaderText = "S2";
+	Grid_PM.Columns[4].HeaderText = "D2";
+	Grid_PM.Columns[5].HeaderText = "S3";
+	Grid_PM.Columns[6].HeaderText = "D3";
+	Grid_PM.Columns[7].HeaderText = "C1";
+	Grid_PM.Columns[8].HeaderText = "C2";
+	Grid_PM.Columns[9].HeaderText = "Test";
+	Grid_PM.Columns[10].HeaderText = "ALU";
+	Grid_PM.Columns[11].HeaderText = "NA";
+	}
         internal void setAllStrings() {
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Settings.Default.Culture);
             button_Clear_Row.Text = Strings.clearRowButton;
@@ -80,6 +104,8 @@ namespace LabZSK.MicroOperations {
         /// <param name="currentMicroInstruction">String representing current microinstruction nam</param>
         public void NewMicroInstruction(string newMicroInstruction, string currentMicroInstruction) {
             Grid_PM.CurrentCell.Value = newMicroInstruction;
+            Console.WriteLine("TEST PM: row=" + Grid_PM.CurrentCell.RowIndex + " col=" + Grid_PM.CurrentCell.ColumnIndex + " value=" + Grid_PM.CurrentCell.Value);
+
             AUpdateData(Grid_PM.CurrentCell.RowIndex, Grid_PM.CurrentCell.ColumnIndex, newMicroInstruction);
             if (Grid_PM.CurrentCell.ColumnIndex == 11 && (Grid_PM.CurrentCell.Value.ToString() == "" || Convert.ToInt32(Grid_PM.CurrentCell.Value) == 0)) {
                 Grid_PM.CurrentCell.Value = "";
@@ -280,9 +306,12 @@ namespace LabZSK.MicroOperations {
         internal void button_Save_Table_Click(object sender, EventArgs e) {
             save_File_Dialog.Filter = "Pamięć mikroprogramu|*.pm|Wszystko|*.*";
             save_File_Dialog.Title = "Zapisz mikroprogram";
-            if (!Directory.Exists(envPath + @"\PM\"))
-                Directory.CreateDirectory(envPath + @"\PM\");
-            save_File_Dialog.InitialDirectory = envPath + @"\PM\";
+            string pmPath = Path.Combine(envPath, "PM");
+
+	    if (!Directory.Exists(pmPath))
+		 Directory.CreateDirectory(pmPath);
+
+	    save_File_Dialog.InitialDirectory = pmPath;
             DialogResult saveFileDialogResult = save_File_Dialog.ShowDialog();
             if (saveFileDialogResult == DialogResult.OK && save_File_Dialog.FileName != "") {
                 SaveTable(save_File_Dialog.FileName);
@@ -293,10 +322,12 @@ namespace LabZSK.MicroOperations {
             if (!view.IsRunning) {
                 open_File_Dialog.Filter = "Pamięć Mikroprogramu|*.pm|Wszystko|*.*";
                 open_File_Dialog.Title = "Wczytaj mikroprogram";
-                if (Directory.Exists(envPath + @"\PM\"))
-                    open_File_Dialog.InitialDirectory = envPath + @"\PM\";
-                else
-                    open_File_Dialog.InitialDirectory = envPath;
+                string pmPath = Path.Combine(envPath, "PM");
+
+		if (Directory.Exists(pmPath))
+		    open_File_Dialog.InitialDirectory = pmPath;
+		else
+		    open_File_Dialog.InitialDirectory = envPath;	
 
                 DialogResult openFileDialogResult = open_File_Dialog.ShowDialog();
                 if (openFileDialogResult == DialogResult.OK && open_File_Dialog.FileName != "") {
@@ -488,7 +519,7 @@ namespace LabZSK.MicroOperations {
                 if (addToPrint)
                     allText += tmp + "\r\n";
             }
-            string dirPath = envPath + @"\TMP\";
+            string dirPath = Path.Combine(envPath, "TMP");
             string filePath;
             do {
                 filePath = dirPath + "PM-" + new Random().Next(1, 10024) + "-" + (new Random().Next(1, 10024) + new Random().Next(50, 80)) + ".txt";

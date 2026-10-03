@@ -17,7 +17,7 @@ namespace LabZSK.Memory {
     /// Displays memory and allows to modify data
     /// </summary>
     public partial class MemView : Form {
-        private string envPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LabZSK";
+        private string envPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LabZSK");
         internal event Action<int, string, string, int> AUpdateForm;
 
         /// <summary>
@@ -226,9 +226,9 @@ namespace LabZSK.Memory {
         internal void button_Save_Table_Click(object sender, EventArgs e) {
             save_File_Dialog.Filter = "Pamięć operacyjna|*.po|Wszystko|*.*";
             save_File_Dialog.Title = "Zapisz zawartość pamięci";
-            if (!Directory.Exists(envPath + @"\PO\"))
-                Directory.CreateDirectory(envPath + @"\PO\");
-            save_File_Dialog.InitialDirectory = envPath + @"\PO\";
+            if (!Directory.Exists(Path.Combine(envPath, "PO")))
+                Directory.CreateDirectory(Path.Combine(envPath, "PO"));
+            save_File_Dialog.InitialDirectory = Path.Combine(envPath, "PO");
             DialogResult saveFileDialogResult = save_File_Dialog.ShowDialog();
             if (saveFileDialogResult == DialogResult.OK && save_File_Dialog.FileName != "") {
                 SaveTable(save_File_Dialog.FileName);
@@ -240,8 +240,8 @@ namespace LabZSK.Memory {
             if (!view.IsRunning) {
                 open_File_Dialog.Filter = "Pamięć operacyjna|*.po|Wszystko|*.*";
                 open_File_Dialog.Title = "Wczytaj zawartość pamięci operacyjnej";
-                if (Directory.Exists(envPath + @"\PO\"))
-                    open_File_Dialog.InitialDirectory = envPath + @"\PO\";
+                if (Directory.Exists(Path.Combine(envPath, "PO")))
+                    open_File_Dialog.InitialDirectory = Path.Combine(envPath, "PO");
                 else
                     open_File_Dialog.InitialDirectory = envPath;
 
@@ -564,7 +564,7 @@ namespace LabZSK.Memory {
             }
 
 
-            string dirPath = envPath + @"\TMP\";
+            string dirPath = Path.Combine(envPath, "TMP");
             string filePath;
             do {
                 filePath = dirPath + "PAO-" + new Random().Next(1, 10024) + "-" + (new Random().Next(1, 10024) + new Random().Next(100, 160)) + ".txt";

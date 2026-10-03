@@ -243,3 +243,12 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+# LabZSK Linux/Mono runtime files
+*.bak
+*.bak2
+*.before-*
+LabZSK.cfg
+PM/
+PO/
+TMPPAO-*
+TMPPM-*

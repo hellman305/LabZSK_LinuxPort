@@ -11,7 +11,7 @@ using System.Xml;
 namespace LabZSK.Other {
     public partial class Options : Form {
         private bool suppressReload = true;
-        private string _environmentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LabZSK";
+        private string _environmentPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LabZSK");
         internal event Action ACallUpdate;
         public Options() {
             InitializeComponent();
@@ -163,7 +163,7 @@ namespace LabZSK.Other {
             OpenFileDialog open_File_Dialog = new OpenFileDialog();
             open_File_Dialog.Filter = "Plik konfiguracyjny|*.cfg|Wszystko|*.*";
             open_File_Dialog.Title = "Wczytaj konfigurację";
-            if (Directory.Exists(_environmentPath + @"\PO\"))
+            if (Directory.Exists(Path.Combine(_environmentPath, "PO")))
                 open_File_Dialog.InitialDirectory = _environmentPath;
 
             DialogResult openFileDialogResult = open_File_Dialog.ShowDialog();
