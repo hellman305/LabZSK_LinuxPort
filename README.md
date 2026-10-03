@@ -12,16 +12,16 @@ Pobieranie:
 ```bash
 git clone https://github.com/hellman305/LabZSK_LinuxPort.git
 cd LabZSK_LinuxPort
-
+```
 
 Kompilacja: 
-
+```bash
 TERM=dumb xbuild LabZKT/LabZSK.csproj
-
+```
 Uruchamianie:
-
+```bash
 TERM=dumb mono LabZKT/bin/Debug/LabZSK.exe
-
+```
 
 
 LabZSK version 1.2.3.0
