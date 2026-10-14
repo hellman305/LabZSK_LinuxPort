@@ -830,11 +830,11 @@ namespace LabZSK.Simulation {
                 Strings.networkInterfaces + ": " + ipAddrList + "\n\n");
             if (Settings.Default.CanCloseLog)
                 addTextToLog(Strings.logClosingAllowed + "\n");
-            if (Settings.Default.CanEditOptions)
-                addTextToLog(Strings.canEditSettings + "\n");
-            if (Settings.Default.IsDevConsole || Settings.Default.CanEditOptions)
+            //if (Settings.Default.CanEditOptions)
+               // addTextToLog(Strings.canEditSettings + "\n");
+            //if (Settings.Default.IsDevConsole || Settings.Default.CanEditOptions)
             //if (!Convert.ToBoolean(ConfigurationManager.AppSettings["ApplicationForStudents"]))
-                addTextToLog(Strings.notForStudents + "\n");
+               // addTextToLog(Strings.notForStudents + "\n");
         }
         internal void AShowCurrentLog()
         {
